@@ -30,12 +30,12 @@ public class SupplierController {
     }
 
     @GetMapping("/find/vat/{vat}")
-    public ResponseEntity<List<Supplier>> findAllByVAT(@PathVariable("vat") String vat) {
+    public ResponseEntity<Supplier> findAllByVAT(@PathVariable("vat") String vat) {
         Supplier supplier = service.findByVAT(vat);
         if (supplier == null) {
             throw new RuntimeException("Supplier with vat " + vat + " not found");
         } else {
-            return ResponseEntity.status(HttpStatus.OK).body(service.findByCompanyName(supplier.getCompanyName()));
+            return ResponseEntity.status(HttpStatus.OK).body(supplier);
         }
     }
 
