@@ -1,0 +1,47 @@
+services:
+  frontend:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    restart: always
+    networks:
+      - generalNetwork
+
+  backend:
+    build:
+      context: ./back
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      database:
+        condition: service_healthy
+    restart: always
+    networks:
+      - generalNetwork
+
+  database:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    volumes:
+      - type: bind
+        source: ./db/dbData/
+        target: /var/lib/mysql
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      interval: 2s
+      timeout: 4s
+      retries: 50
+    networks:
+      - generalNetwork
+    restart: always
+
+networks:
+  generalNetwork:
+    name: generalNetwork
+    driver: bridge
