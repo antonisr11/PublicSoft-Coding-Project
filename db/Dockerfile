@@ -10,5 +10,8 @@ ENV MYSQL_PASSWORD=P@ssw0rd
 # Expose the MySQL port
 EXPOSE 3306
 
+# Copy init.sql to create the db
+COPY init.sql /docker-entrypoint-initdb.d/
+
 # Run the command to start MySQL when the container starts
 CMD ["mysqld"]
