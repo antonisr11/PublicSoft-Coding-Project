@@ -113,3 +113,7 @@ The backend service returns error messages in the following format:
 - DTOs: Create Data Transfer Objects to separate the API model from the entity model.
 - Validation: Add input validation to ensure data integrity and consistency when saving suppliers is implemented.
 - Pagination: Implement pagination for the list of suppliers to improve performance and user experience.
+
+## Easter Egg
+
+There is a small easter egg in the frontend application. Can you find it without looking at the code?

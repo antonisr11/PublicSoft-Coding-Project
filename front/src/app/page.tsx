@@ -77,7 +77,12 @@ const SuppliersPage = () => {
 
     return (
         <div className="container mt-5">
-            <h1 className="mb-4 text-center">Supplier(s)</h1>
+            <h1
+                className="mb-4 text-center"
+                onClick={() => window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank')}
+            >
+                Supplier(s)
+            </h1>
 
             <div className="row mb-4">
                 <div className="col-md-6">
